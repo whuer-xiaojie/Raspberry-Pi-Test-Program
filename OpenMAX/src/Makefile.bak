@@ -1,0 +1,34 @@
+#CC             = gcc
+CROSS_COMPILE   =arm-linux-gnueabihf-
+CC              = $(CROSS_COMPILE)gcc
+RM              = rm -f
+
+CFLAGS  = -O2 -Wall
+LDFLAGS = -s
+LIBS    = -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread  
+
+#OBJECTS =  get_a_list_of_components.o
+#OBJECTS = get_component_port_info.o
+
+
+
+
+CFLAGS =  -DRASPBERRY_PI -DOMX_SKIP64BIT -I/opt/vc/include/ -I /opt/vc/include/interface/vmcs_host/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -I/opt/vc/src/hello_pi/libs/ilclient
+LIBS    += -L/opt/vc/lib -Wl,-rpath,/opt/vc/lib  -L/opt/vc/src/hello_pi/libs/ilclient   -lilclient  -lEGL -lGLESv2
+
+OBJECTS = il_decode_image.o
+
+#PROGRAM = get_a_list_of_components-x9
+#PROGRAM = get_component_port_info-x9
+PROGRAM = il_decode_image-x9
+
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(PROGRAM): $(OBJECTS)
+	-$(RM) $@
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
+
+clean:
+	-$(RM) $(OBJECTS) $(PROGRA)

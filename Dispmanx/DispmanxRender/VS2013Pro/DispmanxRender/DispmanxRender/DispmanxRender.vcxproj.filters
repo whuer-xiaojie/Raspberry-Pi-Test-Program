@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\common">
+      <UniqueIdentifier>{5cb86720-52c3-4018-8d4e-4a3cc16f147e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\common">
+      <UniqueIdentifier>{d7f1d361-af8e-4afb-b533-0fca97d44ff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\imageRender">
+      <UniqueIdentifier>{22fe254d-49a6-41c4-9986-095dbc0f0fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\imageRender">
+      <UniqueIdentifier>{321b3729-0ecc-4e8b-8e6a-40df7975fc87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\videoRender">
+      <UniqueIdentifier>{c5b29a1e-85c7-4f1a-bf44-b65067c8cbd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\videoRender">
+      <UniqueIdentifier>{62ff1875-b37f-40b3-9861-3d9ad0e100c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\audioRender">
+      <UniqueIdentifier>{2d1d2403-8fe4-4c49-965e-ad7901be6ed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\audioRender">
+      <UniqueIdentifier>{494fbed5-ac04-4fb4-bb28-44f539fe2228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\dispResizer">
+      <UniqueIdentifier>{5a7774f7-548f-440b-bf4c-1887181288c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\dispResizer">
+      <UniqueIdentifier>{c2d4a644-fb33-4e9d-8d74-1757d2256e11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\imageRender\Makefile">
+      <Filter>源文件\imageRender</Filter>
+    </None>
+    <None Include="..\..\..\imageRender\readme.md">
+      <Filter>源文件\imageRender</Filter>
+    </None>
+    <None Include="..\..\..\audioRender\Makefile">
+      <Filter>源文件\audioRender</Filter>
+    </None>
+    <None Include="..\..\..\audioRender\readme.md">
+      <Filter>源文件\audioRender</Filter>
+    </None>
+    <None Include="..\..\..\videoRender\Makefile">
+      <Filter>源文件\videoRender</Filter>
+    </None>
+    <None Include="..\..\..\videoRender\readme.md">
+      <Filter>源文件\videoRender</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\common\backLayer.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\imageLayer.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\dispRender.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\imageRender\mypng.h">
+      <Filter>头文件\imageRender</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\imageRender\resize.h">
+      <Filter>头文件\imageRender</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\videoRender\video.h">
+      <Filter>头文件\videoRender</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\keyboard.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\clock.h">
+      <Filter>头文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\dispResizer\dispResizer.h">
+      <Filter>头文件\dispResizer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\common\backLayer.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\imageLayer.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\dispRender.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\imageRender\main.c">
+      <Filter>源文件\imageRender</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\imageRender\mypng.c">
+      <Filter>源文件\imageRender</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\imageRender\resize.c">
+      <Filter>源文件\imageRender</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\videoRender\video.c">
+      <Filter>源文件\videoRender</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\videoRender\main.c">
+      <Filter>源文件\videoRender</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\keyboard.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\clock.c">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\dispResizer\dispResizer.c">
+      <Filter>源文件\dispResizer</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

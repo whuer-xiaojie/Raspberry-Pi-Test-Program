@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\IL">
+      <UniqueIdentifier>{bbc6a793-d43b-4a1c-9aa3-a4653235ed1f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Audio.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Broadcom.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Component.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Core.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_ILCS.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Image.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Index.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_IVCommon.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Other.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Types.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IL\OMX_Video.h">
+      <Filter>头文件\IL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\ilclient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_typedef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_resize.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_video.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_audio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\bcm_host.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_render.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\omx_graphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Src\ilclient.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\ilcore.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_image.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_typedef.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_resize.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_render.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_graphics.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\omx_video.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Src\Makefile">
+      <Filter>源文件</Filter>
+    </None>
+  </ItemGroup>
+</Project>
