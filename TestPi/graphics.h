@@ -7,11 +7,11 @@
 
 void listbox_add(const char *s);
 
-void x9_render_buffer_R8G8B8(const unsigned char *buf);/*draw the buffer to the window*/
+void render_buffer_R8G8B8(const unsigned char *buf);/*draw the buffer to the window*/
 
-int x9_create_texture(void);/*get the x9 thread context and texture from the x9 show window*/
+int create_texture(void);/*get the x9 thread context and texture from the x9 show window*/
 
-int x9_close_texture(void);/*close the x9 thread context and texture*/
+int close_texture(void);/*close the x9 thread context and texture*/
 
 
 //void lcd_render_buffer_R8G8B8(const unsigned char *buf);/*draw the  buffer to the lcd show window*/

@@ -23,8 +23,8 @@
 #include "../pc/vram.h"
 
 //x9 Show Window Size
-#define X9_SCREEN_WIDTH		800
-#define X9_SCREEN_HEIGHT	600
+#define SCREEN_WIDTH		800
+#define SCREEN_HEIGHT	600
 
 //the x9 show region size
 extern int sign_width;
@@ -44,24 +44,24 @@ struct CUBE_STATE_T
 	EGLConfig config;
 	EGLContext gl_context;
 
-	//GLuint x9_textureId;
+	//GLuint textureId;
 	GLuint program;/*the x9 shader program*/
 	GLint  positionLoc;/*the x9 shader variable entrance*/
 	GLint  texCoordLoc;
 	GLint  samplerLoc;
 
-	GLuint x9_textureId;/*the x9 paint texture name*/
+	GLuint textureId;/*the x9 paint texture name*/
 };
 
 struct CUBE_STATE_T *state;
 /************************************************************************/
 /*
-*vertex Shader Ô´Âë
-*attribute     ±äÁ¿ÓÃÓÚ»ñÈ¡¶¨µãÊôÐÔÐÅÏ¢(¶¥µã×ø±ê£¬ÎÆÀí×ø±ê£¬ÑÕÉ«µÈ)
-*a_position    ´æ·Å¶¥µãÎ»ÖÃ×ø±êÐÅÏ¢£¨x,y£©
-*a_texCoord    ´æ·ÅÎÆÀí×ø±êÐÅÏ¢(u,v)
-*varying       ±äÁ¿ÓÃÓÚºÍflagment Shader½øÐÐÊý¾Ý´«µÝ
-*v_texCoord    ´«µÝÎÆÀí×ø±êÐÅÏ¢¸øÆ¬Ôª×ÅÉ«Æ÷  (¾­¹ýGPU¼ÆËã×ª»¯¹ýµÄ)
+*vertex Shader Ô´ï¿½ï¿½
+*attribute     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½É«ï¿½ï¿½)
+*a_position    ï¿½ï¿½Å¶ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½x,yï¿½ï¿½
+*a_texCoord    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢(u,v)
+*varying       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½flagment Shaderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
+*v_texCoord    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Æ¬Ôªï¿½ï¿½É«ï¿½ï¿½  (ï¿½ï¿½ï¿½ï¿½GPUï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 */
 /************************************************************************/
 
@@ -76,10 +76,10 @@ const char *vertex_shader_src =//"#version 200 core   \n"
 
 /************************************************************************/
 /*
-*fragment Shader         Ô´Âë
-*precision mediump float Ö¸¶¨floatÀàÐÍ±äÁ¿µÄ¾«¶ÈÎªÖÐµÈ¾«¶È
-*v_texCoord              ½ÓÊÜÓÉvertex Shader´«¹ýÀ´µÄÎÆÀí×ø±ê
-*s_texture               ÓÃÓÚ·ÃÎÊÎÆÀí×ø±êµÄ½Ó¿Ú£¨Ïàµ±ÓÚÈ«¾Ö±äÁ¿£©
+*fragment Shader         Ô´ï¿½ï¿½
+*precision mediump float Ö¸ï¿½ï¿½floatï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Îªï¿½ÐµÈ¾ï¿½ï¿½ï¿½
+*v_texCoord              ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vertex Shaderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*s_texture               ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Ó¿Ú£ï¿½ï¿½àµ±ï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 /************************************************************************/
 
@@ -93,8 +93,8 @@ const char *fragment_shader_src =//"#version 200 core   \n"
 
 /************************************************************************/
 /*
-*EGL surfaceÅäÖÃÊôÐÔÁÐ±í
-*ºì¡¢ÂÌ¡¢À¶Èý»ùÉ«µÄ¸ñÊ½¸÷Îª8Î»£¬Ò²¾ÍÊÇ24Î»
+*EGL surfaceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+*ï¿½ì¡¢ï¿½Ì¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Ä¸ï¿½Ê½ï¿½ï¿½Îª8Î»ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½24Î»
 */
 /************************************************************************/
 
@@ -114,11 +114,11 @@ const EGLint context_attributes[] =
 };
 /************************************************************************/
 /*
-*º¯ÊýÃû£ºload_shader(const char *source, GLenum type)
-*¹¦ÄÜ  £º´´½¨×ÅÉ«Æ÷£¨Shader£©²¢Ö¸¶¨×ÅÉ«Æ÷µÄÔ´Âë²¢½øÐÐ±àÒë
-*²ÎÊý  £ºsource ´æ·Å×ÅÉ«Æ÷£¨Shader£©µÄÔ´ÂëµÄÖ¸Õë£¬type ÐèÒª´´½¨µÄShaderµÄÀàÐÍ
-*       £¨GL_VERTEX_SHADERºÍGL_FRAGMENT_SHADER£©
-*·µ»ØÖµ£ºshader´´½¨³É¹¦·µ»ØshaderÃèÊö·û£¬´´½¨Ê§°Ü»òÕßÔ´Âë´íÎóÔò·µ»Ø0
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½load_shader(const char *source, GLenum type)
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Shaderï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ë²¢ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½source ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Shaderï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ö¸ï¿½ë£¬type ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Shaderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*       ï¿½ï¿½GL_VERTEX_SHADERï¿½ï¿½GL_FRAGMENT_SHADERï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½shaderï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½shaderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü»ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½0
 */
 /************************************************************************/
 static GLuint load_shader(const char *source, GLenum type)
@@ -161,11 +161,11 @@ static GLuint load_shader(const char *source, GLenum type)
 }
 /************************************************************************/
 /*
-*º¯ÊýÃû£ºinit_graphics(void)
-*¹¦ÄÜ  £º³õÊ¼»¯Ò»¸öEGL´°¿ÚÓÃÓÚÏÔÊ¾£¬²¢Íê³ÉÒ»¸öOpenGLµÄ¿ÉÖ´ÐÐ³ÌÐò¶ÔÏó£¨program£©µÄ
-*        ±àÒëµÈ£¬²¢»ñÈ¡¸Ã¶ÔÏóµÄ¶¨µã×ÅÉ«Æ÷´«µÝÊý¾ÝµÄ¡°½áµã¡±
-*²ÎÊý  £ºÎÞ
-*·µ»ØÖµ£º³õÊ¼»¯Íê³É·µ»Ø 0
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½init_graphics(void)
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½EGLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½OpenGLï¿½Ä¿ï¿½Ö´ï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½programï¿½ï¿½ï¿½ï¿½
+*        ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ã¶ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ¡ï¿½ï¿½ï¿½ã¡±
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ 0
 */
 /************************************************************************/
 int init_graphics(void)
@@ -286,7 +286,7 @@ int init_graphics(void)
 	return 0;
 }
 
-int x9_create_texture(void)
+int create_texture(void)
 {
 	GLint  status;
 	GLuint vertex_shader;
@@ -311,7 +311,7 @@ int x9_create_texture(void)
 	if (vertex_shader == 0)
 	{
 		fprintf(stderr, "%s():Load vertex shader failed\n", __FUNCTION__);
-		x9_close_texture();
+		close_texture();
 		exit(1);
 	}
 	//Create Fragment Shader
@@ -319,7 +319,7 @@ int x9_create_texture(void)
 	if (fragment_shader == 0)
 	{
 		fprintf(stderr, "%s():Load fragment shader failed\n", __FUNCTION__);
-		x9_close_texture();
+		close_texture();
 		exit(1);
 	}
 
@@ -327,7 +327,7 @@ int x9_create_texture(void)
 	if ((state->program = glCreateProgram()) == 0)
 	{
 		fprintf(stderr, "%s():glCreateProgram() failed\n", __FUNCTION__);
-		x9_close_texture();
+		close_texture();
 		exit(1);
 	}
 
@@ -351,7 +351,7 @@ int x9_create_texture(void)
 			free(infoLog);
 		}
 		glDeleteProgram(state->program);
-		x9_close_texture();
+		close_texture();
 		exit(1);
 	}
 	//fprintf(stderr, "%s():1111111111\n", __FUNCTION__);
@@ -377,10 +377,10 @@ int x9_create_texture(void)
 	//fprintf(stderr, "%s():222222222\n", __FUNCTION__);
 
 	//get the x9 texture that used to update the show info
-	glGenTextures(1, &state->x9_textureId);
+	glGenTextures(1, &state->textureId);
 
 	//Show the First Texture
-	glBindTexture(GL_TEXTURE_2D, state->x9_textureId);
+	glBindTexture(GL_TEXTURE_2D, state->textureId);
 
 	//Set the Textrue's Attributes
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -390,24 +390,24 @@ int x9_create_texture(void)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 }
-int x9_close_texture(void)
+int close_texture(void)
 {
-	glDeleteTextures(1, &state->x9_textureId);
+	glDeleteTextures(1, &state->textureId);
 	if (glIsProgram(state->program) == GL_TRUE)
 	{
 		glDeleteProgram(state->program);
 	}
 	eglDestroyContext(state->display, state->gl_context);
-	fprintf(stderr, "%s():x9_close_texture down\n", __FUNCTION__);
+	fprintf(stderr, "%s():close_texture down\n", __FUNCTION__);
 }
 
 /************************************************************************/
 /*
-*º¯ÊýÃû£ºint close_graphics(void)
-*¹¦ÄÜ  £ºÊÍ·Å³õÊ¼»¯ÖÐ´´½¨µÄSDL´°¿ÚºÍShaderÈÝÆ÷programÒÔ¼°OpenglµÄ
-*        ÉÏÏÂÎÄ¶ÔÏógl_context
-*²ÎÊý  £ºÎÞ
-*·µ»ØÖµ£º0±íÊ¾ÊÍ·ÅÍê³É
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int close_graphics(void)
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½Í·Å³ï¿½Ê¼ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½SDLï¿½ï¿½ï¿½Úºï¿½Shaderï¿½ï¿½ï¿½ï¿½programï¿½Ô¼ï¿½Openglï¿½ï¿½
+*        ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½gl_context
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½
+*ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½0ï¿½ï¿½Ê¾ï¿½Í·ï¿½ï¿½ï¿½ï¿½
 */
 /************************************************************************/
 int close_graphics(void)
@@ -441,14 +441,14 @@ void listbox_add(const char *s)
 
 /************************************************************************/
 /*
-*º¯ÊýÃû£ºx9_render_buffer_R8G8B8(const unsigned char *buf)
-*¹¦ÄÜ  £ºÀûÓÃOpenglµÄäÖÈ¾¹ÜµÀ°Ñ´æ·ÅÔÚbufÖÐµÄÍ¼ÏñÏÔÊ¾µ½³õÊ¼»¯µÄ´°¿ÚÉÏ
+*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½render_buffer_R8G8B8(const unsigned char *buf)
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Openglï¿½ï¿½ï¿½ï¿½È¾ï¿½Üµï¿½ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½bufï¿½Ðµï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
 *
-*²ÎÊý  £ºÊäÈë£ºbuf ´æ·ÅÐèÒªÏÔÊ¾µÄÍ¼ÏñµÄÎ»Í¼ÐÅÏ¢£¨24Î»RGB¸ñÊ½´æ·Å£©
-*·µ»ØÖµ£ºÎÞ
+*ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ë£ºbuf ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Î»Í¼ï¿½ï¿½Ï¢ï¿½ï¿½24Î»RGBï¿½ï¿½Ê½ï¿½ï¿½Å£ï¿½
+*ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 */
 /************************************************************************/
-void x9_render_buffer_R8G8B8(const unsigned char *buf)
+void render_buffer_R8G8B8(const unsigned char *buf)
 {
 	//Init the Vertex Shader Info
 
@@ -511,7 +511,7 @@ void x9_render_buffer_R8G8B8(const unsigned char *buf)
 	glEnableVertexAttribArray(state->texCoordLoc);
 
 	glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, x9_textureId);
+	//glBindTexture(GL_TEXTURE_2D, textureId);
 
 	glUniform1i(state->samplerLoc, 0);
 	//Draw the Picture
@@ -522,7 +522,7 @@ void x9_render_buffer_R8G8B8(const unsigned char *buf)
 	glFinish();
 }
 
-void x9_render_buffer_R8G8B8A8(const unsigned char *buf)
+void render_buffer_R8G8B8A8(const unsigned char *buf)
 {
 
 }
